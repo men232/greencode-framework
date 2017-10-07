@@ -1,0 +1,107 @@
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "Pistol ammo",
+	class = "spawned_weapon",
+	data = { amountGiven = 30, ammoType = "pistol"},
+	model = "models/Items/BoxSRounds.mdl",
+	price = 300,
+	category = "Патроны",
+	license = "weapon",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "50AE",
+	class = "spawned_weapon",
+	data = { amountGiven = 6, ammoType = ".50AE" },
+	model = "models/Items/BoxSRounds.mdl",
+	price = 350,
+	category = "Патроны",
+	license = "weapon",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "9x19MM",
+	class = "spawned_weapon",
+	data = { amountGiven = 30, ammoType = "9x19MM" },
+	model = "models/Items/BoxSRounds.mdl",
+	price = 310,
+	category = "Патроны",
+	license = "weapon",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "5.7x28MM",
+	class = "spawned_weapon",
+	data = { amountGiven = 30, ammoType = "5.7x28MM" },
+	model = "models/Items/BoxSRounds.mdl",
+	price = 335,
+	category = "Патроны",
+	license = "weapon",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "7.62x39MM",
+	class = "spawned_weapon",
+	data = { amountGiven = 30, ammoType = "7.62x39MM" },
+	model = "models/Items/BoxBuckshot.mdl",
+	price = 350,
+	category = "Патроны",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "5.56x45MM",
+	class = "spawned_weapon",
+	data = { amountGiven = 30, ammoType = "5.56x45MM" },
+	model = "models/Items/BoxBuckshot.mdl",
+	price = 240,
+	category = "Патроны",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = ".45ACP",
+	class = "spawned_weapon",
+	data = { amountGiven = 30, ammoType = ".45ACP"} ,
+	model = "models/Items/BoxBuckshot.mdl",
+	price = 375,
+	category = "Патроны",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = ".338",
+	class = "spawned_weapon",
+	data = { amountGiven = 10, ammoType = ".338" },
+	model = "models/Items/BoxMRounds.mdl",
+	price = 450,
+	category = "Патроны",
+	license = "weapon3",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "7.62x51MM",
+	class = "spawned_weapon",
+	data = { amountGiven = 10, ammoType = "7.62x51MM" },
+	model = "models/Items/BoxMRounds.mdl",
+	price = 350,
+	category = "Патроны",
+	license = "weapon3",
+	allowed = {TEAM_TRADER},
+	description = "Паторны.",
+}:Register();

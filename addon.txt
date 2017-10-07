@@ -1,0 +1,10 @@
+﻿"AddonInfo"
+{
+	"name"		"Green Code V3"
+	"version"	"undo"
+	"up_date"	"13th March 2013"
+	"author_name"	"men232"
+	"author_email"	"men232@bigmir.net"
+	"author_url"	"https://vk.com/men232"
+	"info"		"Средство для разработчиков."
+}

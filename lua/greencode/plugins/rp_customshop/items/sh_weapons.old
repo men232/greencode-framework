@@ -1,0 +1,227 @@
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "Handheld M203",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_joke_m203", nodupe = true},
+	model = "models/weapons/w_pistol.mdl",
+	price = 600,
+	category = "Мелкокалиберное оружие",
+	license = "weapon",
+	allowed = {TEAM_TRADER},
+	description = "Мелкокалиберное оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "Desert Eagle",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_pistol_deagle"},
+	model = "models/weapons/w_pist_deagle.mdl",
+	price = 1200,
+	category = "Мелкокалиберное оружие",
+	license = "weapon",
+	allowed = {TEAM_TRADER},
+	description = "Мелкокалиберное оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "Dual M9 Elites",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_pistol_dualelites"},
+	model = "models/weapons/w_pist_deagle.mdl",
+	price = 1600,
+	category = "Мелкокалиберное оружие",
+	license = "weapon",
+	allowed = {TEAM_TRADER},
+	description = "Мелкокалиберное оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "FiveSeven",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_pistol_fiveseven"},
+	model = "models/weapons/w_pist_fiveseven.mdl",
+	price = 800,
+	category = "Мелкокалиберное оружие",
+	license = "weapon",
+	allowed = {TEAM_TRADER},
+	description = "Мелкокалиберное оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "P228",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_pistol_p228"},
+	model = "models/weapons/w_pist_p228.mdl",
+	price = 2100,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "AK-47",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_rif_ak47"},
+	model = "models/weapons/w_rif_ak47.mdl",
+	price = 2650,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "Famas",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_rif_famas"},
+	model = "models/weapons/w_rif_famas.mdl",
+	price = 1850,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "IMI Galil ARM",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_rif_galil"},
+	model = "models/weapons/w_rif_galil.mdl",
+	price = 2385,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "Ingram MAC-10",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_smg_mac10"},
+	model = "models/weapons/w_smg_mac10.mdl",
+	price = 2100,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "MP5",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_smg_mp5"},
+	model = "models/weapons/w_smg_mp5.mdl",
+	price = 2545,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "FN P90",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_smg_p90"},
+	model = "models/weapons/w_smg_p90.mdl",
+	price = 2432,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "TMP",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_smg_tmp"},
+	model = "models/weapons/w_smg_tmp.mdl",
+	price = 2000,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "UMP .45",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_smg_ump45"},
+	model = "models/weapons/w_smg_ump45.mdl",
+	price = 2000,
+	category = "Автоматическое оружие",
+	license = "weapon2",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "Steyr AUG",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_sniper_aug"},
+	model = "models/weapons/w_rif_aug.mdl",
+	price = 3200,
+	category = "Винтовки",
+	license = "weapon3",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "AWP",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_sniper_awp"},
+	model = "models/weapons/w_snip_awp.mdl",
+	price = 4800,
+	category = "Винтовки",
+	license = "weapon3",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "G3SG1",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_sniper_g3"},
+	model = "models/weapons/w_snip_g3sg1.mdl",
+	price = 5258,
+	category = "Винтовки",
+	license = "weapon3",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "Steyr Scout",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_sniper_scout"},
+	model = "models/weapons/w_snip_scout.mdl",
+	price = 4265,
+	category = "Винтовки",
+	license = "weapon3",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "SG550",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_sniper_sg550"},
+	model = "models/weapons/w_snip_sg550.mdl",
+	price = 3265,
+	category = "Винтовки",
+	license = "weapon3",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();
+
+local ITEM = CSHOP_ITEM_CLASS:New{
+	name = "SG552",
+	class = "spawned_weapon",
+	data = {ammoadd = 0, weaponclass = "cstm_sniper_sg552"},
+	model = "models/weapons/w_rif_sg552.mdl",
+	price = 3830,
+	category = "Винтовки",
+	license = "weapon3",
+	allowed = {TEAM_TRADER},
+	description = "Автоматическое оружие.",
+}:Register();

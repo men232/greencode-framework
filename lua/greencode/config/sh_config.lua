@@ -1,0 +1,1 @@
+greenCode.config:Add( "bank_update", 5, false, false, false );greenCode.config:Add( "bank_start_stock", 10000000, false, false, false );greenCode.config:Add( "bank_agres", 10, false, false, false );greenCode.config:Add( "tax_day", 15, false, false, false );
