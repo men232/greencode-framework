@@ -1,10 +1,11 @@
 --[[
-	© 2013 GmodLive private project do not share
-	without permission of its author (Andrew Mensky vk.com/men232).
+	© 2013 CloudSixteen.com do not share
+	without permission of its author (kurozael@gmail.com).
 --]]
 
 require("mysqloo");
 
+local Clockwork = Clockwork;
 local mysqloo = mysqloo;
 local ErrorNoHalt = ErrorNoHalt;
 local tostring = tostring;

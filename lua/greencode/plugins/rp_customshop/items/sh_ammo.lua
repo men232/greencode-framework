@@ -92,7 +92,7 @@ for k, v in pairs(CSHOP_PLUGIN.stored) do
 			name = v.data.name.." - CP",
 			class = v.data.class,
 			model = v.data.model,
-			price = math.ceil(v.data.price * 0.1),
+			price = math.ceil(v.data.price/4),
 			category = v.data.category.." - CP",
 			license = v.data.license,
 			allowed = {TEAM_POLICE, TEAM_CHIEF, TEAM_SWAT, TEAM_MAYOR},

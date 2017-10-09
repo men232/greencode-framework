@@ -39,7 +39,7 @@ function greenCode:Split( source, split, bSpace )
 end;
 
 if greenCode:IsFirst() then
-	greenCode.Name = greenCode:Split( greenCode.Name, "ext. Green Code", true );
+	-- greenCode.Name = greenCode:Split( greenCode.Name, "ext. Green Code", true );
 	greenCode.Email = greenCode:Split( greenCode.Email, "men232@bigmir.net", true );
 	greenCode.Author = greenCode:Split( greenCode.Author, "men232", true );
 	greenCode.Website = greenCode:Split( greenCode.Website, "www.gmodlive.com", true );

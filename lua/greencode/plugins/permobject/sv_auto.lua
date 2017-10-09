@@ -79,6 +79,7 @@ function PLUGIN:RestoreObject()
 			ent:Activate();
 			
 			local phys = ent:GetPhysicsObject();
+
 			if (IsValid(phys)) then
 				phys:Wake();
 				phys:EnableMotion(!v.frozen);
