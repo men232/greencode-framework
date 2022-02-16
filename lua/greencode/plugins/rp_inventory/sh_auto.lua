@@ -23,7 +23,7 @@ ENUM_INV_CMD_RESEARCH = 3;
 
 -- A function called when plugin is initialized
 function PLUGIN:Initialized()
-	local debugMsg = "InvItem Registred ("..(#self.stored).."):\n";
+	local debugMsg = "InvItem Registred:\n";
 	for i=1, #self.stored do
 		debugMsg = debugMsg.."\t\t"..tostring(self.stored[i]).."\n";
 	end;
@@ -32,11 +32,6 @@ function PLUGIN:Initialized()
 end;
 
 if SERVER then
-	hook.Remove("PlayerUse", "rp_inventory");
-	hook.Add("PlayerUse", "rp_inventory", function(ply, ent)
-		return PLUGIN:PlayerUse(ply, ent);
-	end);
-
 	function PLUGIN:PlayerCharacterInitialized( player )
 		local items = player:GetCharacterData("_inv");
 		local inventory = player:CreateInventory();
@@ -81,22 +76,39 @@ if SERVER then
 		local pos = player:GetShootPos();
 		local ent = self:SpawnInventory(inventory);
 		ent:SetAngles(player:GetAngles());
-		ent:SetTitle(player:GetName());
+		--ent:SetTitle(player:GetName());
 		ent.RemoveIsEmpty = true;
 
 		self:Sync(inventory);
 		self:Sync(ent:GetInventory());
 	end;
 
+	function PLUGIN:EntityRemoved( ent )
+		if (not ent.gc_inventory) then
+			return;
+		end;
+
+		local inventory = ent:GetInventory();
+
+		if (inventory:IsEmpty()) then
+			return;
+		end;
+
+		local inv = PLUGIN:SpawnInventory(inventory, ent:GetPos());
+		inv.RemoveIsEmpty = true;
+	end;
+
 	-- A function to spawn inventory
 	function PLUGIN:SpawnInventory( inventory, position )
 		local owner = inventory:GetOwner();
 		local pos = position or owner:IsPlayer() and owner:GetShootPos() or owner:GetPos();
-		local ent = ents.Create("spawned_inventory");
+		local ent = ents.Create("prop_physics");
 		
+		ent:SetModel("models/props_c17/BriefCase001a.mdl");
 		ent:SetPos(pos);
 		ent:Spawn();
 		ent:Activate();
+		ent:CreateInventory();
 
 		ent:GetInventory():SetData("items", inventory:GetItems());
 		inventory:SetData("items", {});
@@ -264,6 +276,10 @@ if SERVER then
 			gc.plugin:Call("OnPlayerInventoryRemoveItem", inventory, item, count, tUserData);
 		end;
 
+		if (inventory:IsEmpty() and !bIsPlayer and owner.RemoveIsEmpty) then
+			owner:Remove();
+		end;
+
 		-- Send data to client
 		self:Sync( inventory );
 	end;
@@ -272,18 +288,45 @@ if SERVER then
 	function PLUGIN:OnPlayerInventoryPutItem( player, rm_inventory, item )
 		local pl_inventory = player:GetInventory();
 		local nOwerload = self:CalcOverloadLevel(pl_inventory, true);
-
-		print(nOwerload);
+		local rm_owner = rm_inventory:GetOwner();
+		local rm_phys = rm_owner:GetPhysicsObject();
+		local itemW = item:GetWeight();
 
 		if (pl_inventory:UniqueID() == rm_inventory:UniqueID()
 			and nOwerload > 1.85) then
 				return false, "Не лезет.";
+		elseif (IsValid(rm_phys)
+			and rm_owner:GetClass() == "prop_physics"
+			and (rm_inventory:CalculateWeight() + itemW) > (rm_phys:GetMass() * 0.25)) then
+				return false, "Не лезет в это.";
+		end;
+	end;
+
+	hook.Add( "PlayerUse", "gc_inv_ply_use", function( player, entity )
+		return PLUGIN:PlayerUse( player, entity );
+	end)
+
+	-- Prop inventory avilible
+	function PLUGIN:KeyPress( player, key )
+		if (key == IN_USE and player:KeyDown(IN_SPEED)) then
+			local tr = player:GetEyeTrace();
+			local entity = tr.Entity;
+
+			if (!IsValid(entity) or entity:GetClass() != "prop_physics") then
+				return;
+			end;
+
+			if (player:GetPos():Distance(entity:GetPos()) > 150) then
+				return false;
+			end;
+
+			self:PlayerUse( player, entity );
 		end;
 	end;
 
 	-- Called when player user some entity
 	function PLUGIN:PlayerUse( player, entity )
-		if not player:KeyDown(IN_DUCK) then
+		if not player:KeyDown(IN_SPEED) then
 			return;
 		end;
 
@@ -304,6 +347,7 @@ if SERVER then
 		end;
 
 		if (not rm_inventory) then
+			print("pick");
 			self:PlayerPickUp( player, entity );
 			player.gcLastPickUp = curTime;
 		else
@@ -329,7 +373,7 @@ if SERVER then
 			return false, "АЙ. Горячо!";
 		end;
 
-		local owner = entity:Getowning_ent();
+		local owner = entity.Getowning_ent and entity:Getowning_ent() or nil;
 		local nOwerload = self:CalcOverloadLevel(player:GetInventory());
 
 		if (nOwerload > 1.85) then
@@ -388,8 +432,10 @@ if SERVER then
 			end;
 		end;
 
+		print(player, "attempt to pick up", class, "allow =", bFinded);
+
 		if (!bFinded) then
-			player:ShowHint("Невозможно это поднять", 5, Color(255,100,100), nil, true);
+			player:ShowHint("Невозможно поместить в инвентарь.", 5, Color(255,100,100), nil, true)
 			return;
 		end;
 
@@ -529,7 +575,6 @@ function PLUGIN:CalcOverloadLevel( inventory, bCalcWeight )
 	local sCfgName = "inv_factor_"..string.lower(owner:GetUserGroup());
 	local allowWeight = minWeight + (coeficient * math.Max(attribute, 1));
 
-	print(curWeight, allowWeight, coeficient);
 	return math.Clamp(gc.config:Get(sCfgName):Get(1.0) * (curWeight / allowWeight), 0.0, 2.0), curWeight;
 end;
 
@@ -618,6 +663,47 @@ if SERVER then
 		--player:GetInventory():SetData("items", items or {});
 	end);
 
+	greenCode.chat:AddCommand( "inv", function( player, tArguments )
+		local tr = player:GetEyeTrace();
+		local entity = tr.Entity;
+
+		if (!IsValid(entity)) then
+			return;
+		end;
+
+		if (entity:GetClass() != "prop_physics") then
+			return;
+		end;
+
+		local phys = entity:GetPhysicsObject();
+
+		if (!IsValid(phys)) then
+			return;
+		end;
+
+		if (player:GetPos():Distance(entity:GetPos()) > 150) then
+			return;
+		end;
+
+		local sid = player:SteamID();
+		if (entity._SID == sid and entity.SID == sid and entity.FPPOwnerID == sid) then
+			player:Message( "Ты не владелец этого..." );
+			return;
+		end;
+
+		local afford = phys:GetMass() * 0.25;
+
+		if ( player:CanAfford(afford) ) then
+			player:AddMoney(-afford);
+		else
+			player:Message( "Нужно " .. afford .. "$" );
+			return;
+		end;
+
+		player:Message( "Инвентарь создан." );
+		entity:CreateInventory();
+	end);
+
 	greenCode.command:Add( "inv", 2, function( player, command, args )
 		local inventory = player:GetInventory();
 		if (inventory) then
@@ -634,6 +720,8 @@ if SERVER then
 					player:PrintMsg(2, "\t"..tostring(PLUGIN.buffer[i]) .. " #"..i.." x"..v);
 				end;
 			end;
+		else
+			player:PrintMsg(2, "Inventory not exist.");
 		end;
 	end);
 

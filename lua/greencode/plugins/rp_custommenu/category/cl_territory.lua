@@ -47,7 +47,7 @@ local function AddTitle( title, color, desc, bCallback, bCallback2, bNoChangeFon
 end;
 
 CMENU_TERRITORY_CATEGORY = CM_CAT_CLASS:New{
-	title = "Территории",
+	title = "Собственность",
 	priority = 5,
 	callback = function()		
 		CMENU_PLUGIN = CMENU_PLUGIN or greenCode.plugin:Get("rp_custommenu");
@@ -66,9 +66,9 @@ CMENU_TERRITORY_CATEGORY = CM_CAT_CLASS:New{
 			local BLOCK = BlockMenu:AddItem{ color = Color(0,0,0), h = 35, w = w, callback = function( BLOCK ) BLOCK:TurnToogle(); end };
 			CMENU_PLUGIN:ApplyTemplate( BLOCK, "simple", {
 				color = cMainTitle,
-				title = "Территории",
+				title = "Собственность",
 				desc = [[Здесь вы можете покупать, продавать и настраивать права
-				для своих территорий. Покупая целую территорию, вы становитесь
+				для своей собственности. Покупая собственность, вы становитесь
 				владельцем всех дверей.	]]
 			});
 			
@@ -235,7 +235,7 @@ CMENU_TERRITORY_CATEGORY = CM_CAT_CLASS:New{
 										"Да", function() RunConsoleCommand("gc_ter_sell", TERRITORY:UniqueID() ) end,
 										"Нет", function() end)
 						end };
-						CMENU_PLUGIN:ApplyTemplate( BLOCK, "simple", { color = cTitleColor3, title = "Продать", desc = [[При продаже территории, вы получите 50% от её стоимости и
+						CMENU_PLUGIN:ApplyTemplate( BLOCK, "simple", { color = cTitleColor3, title = "Продать", desc = [[При продаже собственности, вы получите 50% от её стоимости и
 							типа покупки.]] });
 						BLOCK:TurnToogle();
 					end;

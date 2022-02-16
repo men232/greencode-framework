@@ -92,7 +92,7 @@ CMENU_ATTR_CATEGORY = CM_CAT_CLASS:New{
 				function BLOCK.edit2:OnGetFocus() self:OnTextChanged(); end;
 
 			-- Start Money
-			BLOCK.edit3 = xlib.makeslider{x = 10, y = 215, w = w-20, min = 5000, max = gc.Client:getDarkRPVar("money") or 0, textcolor = Color(255,255,255), value = 5000, parent = BLOCK, label = "Начальный капитал: $" };
+			BLOCK.edit3 = xlib.makeslider{x = 10, y = 215, w = w-20, min = 5000, max = gc.Client:getDarkRPVar("money") or 0, textcolor = Color(100,100,100), value = 5000, parent = BLOCK, label = "Начальный капитал: $" };
 			BLOCK.edit3.Label:SetExpensiveShadow(2, Color(0,0,0,255));
 
 			-- Create
@@ -226,7 +226,7 @@ CMENU_ATTR_CATEGORY = CM_CAT_CLASS:New{
 				desc = "\n\n\n\n\n",
 			});
 
-			BLOCK_SET.edit1 = xlib.makeslider{x = 10, y = 40, value = 1, w = w-20, min = 1, max = gc.Client:getDarkRPVar("money") or 0, textcolor = Color(255,255,255), parent = BLOCK_SET, label = "Сумма: $" };
+			BLOCK_SET.edit1 = xlib.makeslider{x = 10, y = 40, value = 1, w = w-20, min = 1, max = gc.Client:getDarkRPVar("money") or 0, textcolor = Color(100,100,100), parent = BLOCK_SET, label = "Сумма: $" };
 			BLOCK_SET.edit1.Label:SetExpensiveShadow(2, Color(0,0,0,255));
 
 			BLOCK_SET.btn1 = xlib.makebutton{x = 10, y = BLOCK_SET.turnOnH-40, w = BLOCK_SET:GetWide()-20, h = 35, label = "Положить", parent = BLOCK_SET};
@@ -245,7 +245,7 @@ CMENU_ATTR_CATEGORY = CM_CAT_CLASS:New{
 				desc = "\n\n\n\n\n",
 			});
 
-			BLOCK_GET.edit1 = xlib.makeslider{x = 10, y = 40,  value = 1, w = w-20, min = 1, max = MANAGEMENT_DEPOSIT_MONEY or 0, textcolor = Color(255,255,255), parent = BLOCK_GET, label = "Сумма: $" };
+			BLOCK_GET.edit1 = xlib.makeslider{x = 10, y = 40,  value = 1, w = w-20, min = 1, max = MANAGEMENT_DEPOSIT_MONEY or 0, textcolor = Color(100,100,100), parent = BLOCK_GET, label = "Сумма: $" };
 			BLOCK_GET.edit1.Label:SetExpensiveShadow(2, Color(0,0,0,255));
 
 			BLOCK_GET.btn1 = xlib.makebutton{x = 10, y = BLOCK_GET.turnOnH-40, w = BLOCK_GET:GetWide()-20, h = 35, label = "Снять", parent = BLOCK_GET};
@@ -309,7 +309,7 @@ CMENU_ATTR_CATEGORY = CM_CAT_CLASS:New{
 			BLOCK_TRANS.edit1 = xlib.maketextbox{x = 10, y = 40, w = BLOCK_TRANS:GetWide()-20, h = 20, tooltip = "Конечний лицевой счет.", parent = BLOCK_TRANS, text = ""};
 			BLOCK_TRANS.edit1:SetNumeric(true);
 
-			BLOCK_TRANS.edit2 = xlib.makeslider{x = 10, y = 75,  value = 1, w = w-20, min = 1, max = MANAGEMENT_DEPOSIT_MONEY or 0, textcolor = Color(255,255,255), parent = BLOCK_TRANS, label = "Сумма: $" };
+			BLOCK_TRANS.edit2 = xlib.makeslider{x = 10, y = 75,  value = 1, w = w-20, min = 1, max = MANAGEMENT_DEPOSIT_MONEY or 0, textcolor = Color(100,100,100), parent = BLOCK_TRANS, label = "Сумма: $" };
 			BLOCK_TRANS.edit2.Label:SetExpensiveShadow(2, Color(0,0,0,255));
 
 			BLOCK_TRANS.btn1 = xlib.makebutton{x = 10, y = BLOCK_TRANS.turnOnH-40, w = BLOCK_TRANS:GetWide()-20, h = 35, label = "Перевод", parent = BLOCK_TRANS};

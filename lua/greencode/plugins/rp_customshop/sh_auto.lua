@@ -148,11 +148,11 @@ if SERVER then
 				local TERRITORY = TER_PLUGIN:FindByID(nLocation);
 				
 				if ( TERRITORY and TERRITORY:IsValid() and player:GetTerritoryLocation() != TERRITORY ) then
-					return false, "Для покупи этого, вы должи находится на территории '"..TERRITORY:Name().."'."
+					return false, "Для покупи этого, вы должи находится на территории собственность '"..TERRITORY:Name().."'."
 				end;
 			else
 				if ( player:GetTerritoryLocation():GetOwnerLevel(player) < 1 ) then
-					return false, "Для покупи этого, вы должи находится на своей территории."
+					return false, "Для покупи этого, вы должи находится на своей собственности."
 				end;
 			end;
 		end;
@@ -220,7 +220,11 @@ if SERVER then
 			ent.SID = player.SID;
 			ent._SID = player:SteamID();
 
+			PrintTable(CSHOP_ITEM.data)
+			PrintTable(tData)
+
 			for k, v in pairs(tData) do
+				print(k, "=", v);
 				ent[k] = v;
 			end;
 
@@ -249,6 +253,7 @@ if SERVER then
 			local bShouldBuy, sReason = greenCode.plugin:Call( "ShouldBuyCShop", player, CSHOP_ITEM );
 
 			if ( bShouldBuy == nil or bShouldBuy ) then
+				print("this works?");
 				local bSpawned, sSpawnError = self:SpawnItem( player, CSHOP_ITEM );
 
 				if ( bSpawned ) then

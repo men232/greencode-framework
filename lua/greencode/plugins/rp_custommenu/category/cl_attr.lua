@@ -11,7 +11,7 @@ local cNormalColor = Color(81,222,81);
 local cBadColor = Color(222,81,81);
 
 CMENU_ATTR_CATEGORY = CM_CAT_CLASS:New{
-	title = "Атрибуты",
+	title = "Умения",
 	priority = 10,
 	callback = function()
 		CMENU_PLUGIN = greenCode.plugin:Get("rp_custommenu");
@@ -24,7 +24,7 @@ CMENU_ATTR_CATEGORY = CM_CAT_CLASS:New{
 			local w = BlockMenu:GetWide() - (BlockMenu.Padding*2);
 			
 			local BLOCK = BlockMenu:AddItem{ color = cBGColor, h = 40, w = w };
-			CMENU_PLUGIN:ApplyTemplate( BLOCK, "simple", { color = Color(178,183,213), title = "Атрибуты", desc = "" } );
+			CMENU_PLUGIN:ApplyTemplate( BLOCK, "simple", { color = Color(178,183,213), title = "Умения", desc = "" } );
 			BLOCK:SetDisabled(true);
 			BLOCK.Title:Center();
 			

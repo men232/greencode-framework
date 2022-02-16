@@ -411,13 +411,13 @@ function hook.Call( sName, gamemode, ... )
 
 	local startTime = SysTime();
 
-		if ( !greenCode.hooks.stored[ sName ] ) then
-			a, b, c, d, e, f = greenCode.plugin:RunHooks( sName, false, ... );
-		end;
-			
-		if ( a == nil && b == nil && c == nil && d == nil && e == nil && f == nil ) then
-			a, b, c, d, e, f =  hook._Call( sName, gamemode or greenCode, ... );
-		end;
+	if ( !greenCode.hooks.stored[ sName ] ) then
+		a, b, c, d, e, f = greenCode.plugin:RunHooks( sName, false, ... );
+	end;
+		
+	if ( a == nil && b == nil && c == nil && d == nil && e == nil && f == nil ) then
+		a, b, c, d, e, f =  hook._Call( sName, gamemode or greenCode, ... );
+	end;
 
 	hook.Timings[ sName ] = SysTime() - startTime;
 

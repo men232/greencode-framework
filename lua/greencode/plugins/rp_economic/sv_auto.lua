@@ -73,12 +73,8 @@ function PLUGIN:TickSecond( curTime )
 		local nTaxPlayerCount = 0;
 		
 		for k, v in pairs(_player.GetAll()) do
-			local team = RPExtraTeams[v:Team()];
-
-			if (!IsValid(team)) then continue end;
-
-			local nSalary = math.ceil((team.salary or GAMEMODE.Config.normalsalary) * nStatus);
-
+			local nSalary = math.ceil((RPExtraTeams[v:Team()].salary or GAMEMODE.Config.normalsalary) * nStatus);
+			
 			if ( v:IsCP() ) then
 				nCPSalary = nCPSalary + nSalary;
 			else

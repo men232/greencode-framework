@@ -19,7 +19,7 @@ function PLUGIN:PlayerSpawnObject( player )
 
 	if ( TERRITORY and TERRITORY:IsValid() ) then
 		if ( !TERRITORY:GetPermission( "spawnobject", player, false ) ) then
-			player:ShowAlert( "На этой территории запрещен spawnobject.", Color(255,150,150,255) );
+			player:ShowAlert( "На этой собственности запрещен спаун объектов.", Color(255,150,150,255) );
 			return false;
 		end;
 	end;

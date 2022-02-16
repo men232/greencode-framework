@@ -50,3 +50,20 @@ for name, v in pairs(FoodItems or {}) do
 	
 	ITEM:Register();
 end;
+
+-- Drink botle
+local WATER_BOTTLE = INV_ITEM_CLASS:New{
+	name = "Water Bottle",
+	class = "spawned_food",
+	model = "models/props/cs_office/water_bottle.mdl",
+	description = "Drink could water...",
+	stackable = true,
+	weight = 2,
+	data = {FoodEnergy = 7, StaminaEnergy = 50}
+};
+
+function WATER_BOTTLE:Compliance( entity )
+	return self("model") == entity:GetModel();
+end;
+
+WATER_BOTTLE:Register();

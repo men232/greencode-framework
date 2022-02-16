@@ -227,8 +227,8 @@ function PLUGIN:Open()
 	end;
 
 	-- Add tabs
-	UI.sheet:AddSheet( "Список задержанных", UI.tab1, "icon16/shield.png", false, false, "Вся необходимая ниформация" );
-	UI.sheet:AddSheet( "Список заключенных", UI.tab2, "icon16/lock.png", false, false, "Вся необходимая ниформация" );
+	UI.sheet:AddSheet( "Список задержанных", UI.tab1, "icon16/shield.png", false, false, false );
+	UI.sheet:AddSheet( "Список заключенных", UI.tab2, "icon16/lock.png", false, false, false );
 
 	-- Clean
 	local Close = UI.panel.Close;

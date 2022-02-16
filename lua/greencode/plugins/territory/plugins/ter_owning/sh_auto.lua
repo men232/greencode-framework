@@ -312,7 +312,7 @@ function PLUGIN:PlayerCanBuyTerritory( TERRITORY, player, sPriceType )
 	if ( !self.class[sPriceType] ) then
 		return false, "Incorrect price type."
 	elseif ( TERRITORY:GetOwnerLevel(player) > 0 ) then
-		return false, "Вы уже владелец этой территорией.";
+		return false, "Вы уже владелец этой собственности.";
 	elseif ( TERRITORY:IsOwned() ) then
 		local tOwnerNames = {}
 		
@@ -320,9 +320,9 @@ function PLUGIN:PlayerCanBuyTerritory( TERRITORY, player, sPriceType )
 			table.insert( tOwnerNames, v.name )
 		end;
 		
-		return false, "Эта территория уже занята: " .. table.concat( tOwnerNames, ", " )..".";
+		return false, "Эта собственность уже занята: " .. table.concat( tOwnerNames, ", " )..".";
 	elseif ( nPrice <= 0 ) then
-		return false, "Эта территории бесценна =) Позовите админа, пусть исправит!";
+		return false, "Эта собственность бесценна =) Позовите админа, пусть исправит!";
 	elseif ( !self:P_CanAfford( sPriceType, player, nPrice ) ) then
 		return false, "Вам это не по корману!";
 	end;
@@ -330,7 +330,7 @@ end;
 
 function PLUGIN:PlayerCanSellTerritory( TERRITORY, player )
 	if ( TERRITORY:GetOwnerLevel(player) < 2 ) then
-		return false, "Вы не можете продать эту территорию.";
+		return false, "Вы не можете продать эту собственность.";
 	end;
 end;
 
@@ -373,7 +373,7 @@ function PLUGIN:PlayerBuyDoor( player, eDoor )
 	local TERRITORY = TER_PLUGIN:GetLocation( eDoor:GetPos() );
 	
 	if ( TERRITORY and TERRITORY:IsValid() and !eDoor:AllowedToOwn( player ) and TERRITORY:GetOwnerLevel(player) < 2 ) then
-		GAMEMODE:Notify( player, 1, 4, "Дверь часть территории '" .. TERRITORY:GetName().. "'." );
+		GAMEMODE:Notify( player, 1, 4, "Дверь часть собственности '" .. TERRITORY:GetName().. "'." );
 		return false;
 	end;
 end;
@@ -383,7 +383,7 @@ function PLUGIN:PlayerSellDoor( player, eDoor )
 	local TERRITORY = TER_PLUGIN:GetLocation( eDoor:GetPos() );
 	
 	if ( TERRITORY and TERRITORY:IsValid() and TERRITORY:UniqueID() != 0 ) then
-		GAMEMODE:Notify( player, 1, 4, "Дверь часть территории '" .. TERRITORY:GetName().. "'." );
+		GAMEMODE:Notify( player, 1, 4, "Дверь часть собственности '" .. TERRITORY:GetName().. "'." );
 		return false;
 	end;
 end;
@@ -413,7 +413,7 @@ function PLUGIN:OnTerritoryBuy( TERRITORY, player, sPriceType, SESSION )
 	TERRITORY:SetData("ownerSession", SESSION:UniqueID());
 
 	player:EmitSound( "greencode/mission_passed"..math.random(1,2)..".mp3" );
-	greenCode.hint:SendAll( player:Name().." купил территорию ["..TERRITORY:GetName().."] "..sPriceType..".", 5, Color( 100, 255, 100 ) );
+	greenCode.hint:SendAll( player:Name().." купил собственность ["..TERRITORY:GetName().."] "..sPriceType..".", 5, Color( 100, 255, 100 ) );
 	player:ConCommand("cl_gc_custommenu_update 7920");
 end;
 
@@ -442,7 +442,7 @@ function PLUGIN:OnTerritorySell( TERRITORY, player )
 	end;
 	
 	-- Update info
-	greenCode.hint:SendAll( player:Name().." продал территорию ["..TERRITORY:GetName().."] "..".", 5, Color( 100, 255, 100 ) );
+	greenCode.hint:SendAll( player:Name().." продал собственность ["..TERRITORY:GetName().."] "..".", 5, Color( 100, 255, 100 ) );
 	player:ConCommand("cl_gc_custommenu_update 7920");
 end;
 

@@ -179,7 +179,7 @@ CMENU_CMD_CATEGORY = CM_CAT_CLASS:New{
 					callback = function( BLOCK ) BLOCK:TurnToogle(); end,
 				};
 				
-				CMENU_PLUGIN:ApplyTemplate( BLOCK, "simple", { /*turn = true,*/ tooltip = "ЛКМ - Развернуть/Свернуть.", color = cCPColor, title = DarkRP.getPhrase("searchwarrantbutton"), desc = "Необходим для обыска частой территории!\nИспользуйте эту функцию если есть весомая причина." } );
+				CMENU_PLUGIN:ApplyTemplate( BLOCK, "simple", { /*turn = true,*/ tooltip = "ЛКМ - Развернуть/Свернуть.", color = cCPColor, title = DarkRP.getPhrase("searchwarrantbutton"), desc = "Необходим для обыска частой собственности!\nИспользуйте эту функцию если есть весомая причина." } );
 				BLOCK.edit1 = xlib.maketextbox{x = 5, y = 65, w = BLOCK:GetWide()-10, h = 20, tooltip = "Здесь нужно указать причину ордера!", parent = BLOCK, text = ""};
 				BLOCK.edit1:SetAllowNonAsciiCharacters(true);
 				

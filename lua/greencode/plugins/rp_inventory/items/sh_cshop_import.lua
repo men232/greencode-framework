@@ -49,6 +49,10 @@ for uid, v in pairs(rp_customshop.buffer or {}) do
 	elseif (string.find(v.data.class, "ammo")) then
 		ITEM:SetData("color", cAmmoColor);
 		ITEM:SetData("weight", v.data.weight or 2);
+
+		function ITEM:Compliance( entity )
+			return self("class") == entity:GetClass();
+		end;
 	end;
 
 	function ITEM:OnDrop( owner )

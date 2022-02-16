@@ -29,11 +29,11 @@ function PLUGIN:CheckDamage( entity, attacker )
 		if ( TERRITORY and TERRITORY:IsValid() ) then			
 			if ( !TERRITORY:GetPermission( "takedamage", attacker, false ) ) then
 				entity.gcLastCheckDamage = curTime + 1.5;
-				return false, "На этой территории нельзя нанести урон.";
+				return false, "На этой собственности нельзя нанести урон.";
 			end;
 		end;
 	else
-		return false, "На этой территории нельзя нанести урон.";
+		return false, "На этой собственности нельзя нанести урон.";
 	end;
 end;
 

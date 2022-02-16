@@ -46,8 +46,7 @@ local function own_item_action(BLOCK)
 	menu:AddOption("Использовать", function() RunConsoleCommand("gc_inv_drop", item:UniqueID(), 1, 1); end);
 	menu:AddOption("Выбросить", function()
 		if (item:IsStackable()) then
-			if (BLOCK.count < 2) then
-				print(item:UniqueID(), 1, "its work?");
+			if (count < 2) then
 				RunConsoleCommand("gc_inv_drop", item:UniqueID(), 1);
 			else
 				Derma_StringRequest("Количество", "Сколько вы хотите выбросить?", "", function(a)
@@ -162,7 +161,6 @@ local function DisplayItem(BlockMenu, inventory, item, count, start_id, callback
 	BLOCK.item = item;
 	BLOCK.inventory = inventory;
 	BLOCK.item_index = !bStackable and count or nil;
-	BLOCK.count = count;
 
 	-- Subscribe update
 	local org_think = BLOCK.Think;
@@ -185,7 +183,7 @@ end;
 -- Basic display inventory
 local function DisplayInventory(BlockMenu, inventory, item_callback, start_id, bHideSupport)
 	local owner = inventory:GetOwner();
-	local sOwnerName = owner.GetName and owner:GetName() or owner.GetTitle and owner:GetTitle() or owner.PrintName;
+	local sOwnerName = (owner.GetName and owner:GetName()) or (owner.GetTitle and owner:GetTitle()) or owner.PrintName or "Some Prop";
 	local w = BlockMenu:GetWide() - (BlockMenu.Padding*2);
 	start_id = start_id or 2;
 

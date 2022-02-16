@@ -73,17 +73,23 @@ if ( !game.GetWorld ) then
 end;
 
 if SERVER then
-	function greenCode:AddDirectory(directory, bRecursive)
+	function greenCode:AddDirectory(directory, bRecursive, bDebug)
 		local files, folders = _file.Find(directory.."*.*", "GAME", "namedesc");
-		
+
 		for k, v in pairs(files) do
+			if bDebug then
+				print("resource: addFile", directory..v);
+			end;
 			resource.AddFile(directory..v);
 		end;
 		
 		if (bRecursive) then
 			for k, v in pairs(folders) do
 				if (v != ".." and v != ".") then
-					self:AddDirectory(directory..v.."/", true);
+					if bDebug then
+						print("resource: addDirectory", directory..v);
+					end;
+					self:AddDirectory(directory..v.."/", true, bDebug);
 				end;
 			end;
 		end;

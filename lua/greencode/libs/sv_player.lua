@@ -256,42 +256,6 @@ function greenCode.player:PlayerThink( player, curTime, infoTable, bAlive )
 	end;
 end;
 
--- Called when a player's footstep sound should be played.
-function gc.player:PlayerFootstep( player, position, foot, sound, volume, recipientFilter )		
-	if ( player:IsRunning() or player:IsJogging() ) then
-		local model = string.lower( player:GetModel() );
-
-		if (string.find(model, "swat") or string.find(model, "metrocop") or string.find(model, "shockcp") or string.find(model, "ghostcp") or string.find(model, "police")) then
-			if (foot == 0) then
-				local randomSounds = {1, 3, 5};
-				local randomNumber = math.random(1, 3);
-				
-				sound = "npc/metropolice/gear"..randomSounds[randomNumber]..".wav";
-			else
-				local randomSounds = {2, 4, 6};
-				local randomNumber = math.random(1, 3);
-				
-				sound = "npc/metropolice/gear"..randomSounds[randomNumber]..".wav";
-			end;
-		elseif (string.find(model, "combine")) then
-			if (foot == 0) then
-				local randomSounds = {1, 3, 5};
-				local randomNumber = math.random(1, 3);
-				
-				sound = "npc/combine_soldier/gear"..randomSounds[randomNumber]..".wav";
-			else
-				local randomSounds = {2, 4, 6};
-				local randomNumber = math.random(1, 3);
-				
-				sound = "npc/combine_soldier/gear"..randomSounds[randomNumber]..".wav";
-			end;
-		end;
-	end;
-	
-	player:EmitSound(sound);
-	return true;
-end;
-
 -- Called when a player's character has loaded.
 function greenCode.player:PlayerCharacterLoaded( player )
 	player.crouchedSpeed = gc.config:Get("crouched_speed"):Get();
@@ -1105,7 +1069,7 @@ greenCode.command:Add( "playurl", 2, function( player, command, args )
 	end;
 end);
 
-greenCode.command:Add( "progressaattr", 1, function( player, command, args )
+greenCode.command:Add( "progressaattr", 0, function( player, command, args )
 	gc.limb:ResetDamage(player);
 	player:BoostAttribute("Runner", ATB_AGILITY, 10000, 600);
 	player:BoostAttribute("Runner", ATB_ACROBATICS, 10000, 600);
